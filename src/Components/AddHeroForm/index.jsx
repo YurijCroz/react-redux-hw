@@ -5,14 +5,12 @@ import {createHero} from '../../actions';
 import {dbSkills} from '../../api';
 
 function AddHeroForm(props) {
-  const {createHeroAction, skills} = props;
-  console.log(skills)
+  const {createHeroAction} = props;
   const initialValues = {
     name: '',
     skills: []
   };
   const submitHandler = (values, formikBag) => {
-    console.log(values);
     createHeroAction(values);
     formikBag.resetForm();
   }
@@ -26,10 +24,19 @@ function AddHeroForm(props) {
           <Field name="name" type="text" placeholder="name"/>
           <div role="group" aria-labelledby="checkbox-group">
             <label>
+              <Field type="checkbox" name="skills" value="dbSkills.innateCapability" />{dbSkills.innateCapability.name}
+            </label>
+            <label>
               <Field type="checkbox" name="skills" value="dbSkills.portalCreation" />{dbSkills.portalCreation.name}
             </label>
             <label>
               <Field type="checkbox" name="skills" value="dbSkills.mindControl" />{dbSkills.mindControl.name}
+            </label>
+            <label>
+              <Field type="checkbox" name="skills" value="dbSkills.animalControl" />{dbSkills.animalControl.name}
+            </label>
+            <label>
+              <Field type="checkbox" name="skills" value="dbSkills.psychicSurgery" />{dbSkills.psychicSurgery.name}
             </label>
           </div>
           <button type="submit">create new hero</button>

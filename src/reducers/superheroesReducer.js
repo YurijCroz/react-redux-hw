@@ -25,10 +25,31 @@ const dbHero = [
     }
 ]
 
-
 const initialState = {
     heroes: dbHero,
     skills: dbSkillsArray
+}
+
+const test = (skills) => {
+    const test = []
+    skills.forEach(sk => {
+        if(sk==="dbSkills.innateCapability"){
+            test.push(dbSkills.innateCapability);
+        } else
+        if(sk==="dbSkills.portalCreation"){
+            test.push(dbSkills.portalCreation);
+        } else
+        if(sk==="dbSkills.mindControl"){
+            test.push(dbSkills.mindControl);
+        } else
+        if(sk==="dbSkills.animalControl"){
+            test.push(dbSkills.animalControl);
+        } else
+        if(sk==="dbSkills.psychicSurgery"){
+            test.push(dbSkills.psychicSurgery)
+        }
+    })
+    return test
 }
 
 const superheroesReducer = (state = initialState, action) => {
@@ -36,15 +57,13 @@ const superheroesReducer = (state = initialState, action) => {
         case ACTION_TYPES.CREATE_HERO: {
             const {heroes} = state;
             const {data} = action;
-            data.skills.forEach(el => Object(el))
-            console.log(data.skills)
+            data.skills=test(data.skills)
             const newHero = {
                 ...data,
                 id: counter++,
                 isSelect: false
             };
             const newHeroesDB = [...heroes, newHero];
-            console.log(newHeroesDB)
             return {heroes: newHeroesDB};
         }
         case ACTION_TYPES.DELETE_HERO: {
@@ -64,13 +83,13 @@ const superheroesReducer = (state = initialState, action) => {
             newHeroesDB[findHeroIndex] = {...newHeroesDB[findHeroIndex], ...data};
             return {heroes: newHeroesDB};
         }
-        case ACTION_TYPES.ADD_SKILLS_HERO: {
-            const {heroes} = state;
-            const {data} = action;
-            const newSkills = {
-                ...data,
-            }
-        }
+        // case ACTION_TYPES.ADD_SKILLS_HERO: {
+        //     const {heroes} = state;
+        //     const {data} = action;
+        //     const newSkills = {
+        //         ...data,
+        //     }
+        // }
         default: return state;
     }
 }
