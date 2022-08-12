@@ -1,0 +1,20 @@
+[
+    {
+        "id": "counter++",
+        "name": "Ancient Scepter",
+        "skills": ["dbSkills.portalCreation", "dbSkills.innateCapability"],
+        "isSelect": "false"
+    },
+    {
+        "id": "counter++",
+        "name": "Phantom Kid",
+        "skills": ["dbSkills.mindControl"],
+        "isSelect": "false"
+    },
+    {
+        "id": "counter++",
+        "name": "Mister Mammoth Mastermind",
+        "skills": ["dbSkills.animalControl", "dbSkills.mindControl"],
+        "isSelect": "false"
+    }
+]

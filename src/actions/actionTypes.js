@@ -1,0 +1,11 @@
+
+const ACTION_TYPES = {
+    //!hero
+    CREATE_HERO: "CREATE_HERO",
+    GET_HERO: "GET_HERO",
+    UPDATE_HERO: "UPDATE_HERO",
+    DELETE_HERO: "DELETE_HERO",
+    ADD_SKILLS_HERO: "ADD_SKILLS_HERO"
+
+};
+export default ACTION_TYPES;
