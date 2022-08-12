@@ -2,7 +2,7 @@ import React from 'react';
 import {Formik, Form, Field, FieldArray} from 'formik';
 import {connect} from 'react-redux';
 import {createHero} from '../../actions';
-// import {dbSkillsArray} from '../../api';
+import {dbSkills} from '../../api';
 
 function AddHeroForm(props) {
   const {createHeroAction, skills} = props;
@@ -20,28 +20,22 @@ function AddHeroForm(props) {
     <>
     <h2>Add new hero</h2>
     <Formik initialValues={initialValues} onSubmit={submitHandler}>
-        {formikProps => {
-            return(
-                <Form>
-                    {/* <Field type="checkbox" name="skills" value="dbSkills.mindControl" /> */}
-                    <FieldArray
-                      name="skills"
-                      render={arrayHelpers => (
-                        <div>
-                          <Field name="name" placeholder="name" />
-                          {skills.map((skill, index, arr) => {
-                          <div key={index}>
-                            <Field type="checkbox" name={`skills[${index}]`} value="123" />
-                          </div>
-                          })}
-                          <button type="button" onClick={() => arrayHelpers.push('')}>+</button>
-                          <button type="submit">create new hero</button>
-                        </div>
-                      )}
-                    />
-                </Form>
-            )
-        }}
+    {formikProps =>  {
+      return(
+        <Form>
+          <Field name="name" type="text" placeholder="name"/>
+          <div role="group" aria-labelledby="checkbox-group">
+            <label>
+              <Field type="checkbox" name="skills" value="dbSkills.portalCreation" />{dbSkills.portalCreation.name}
+            </label>
+            <label>
+              <Field type="checkbox" name="skills" value="dbSkills.mindControl" />{dbSkills.mindControl.name}
+            </label>
+          </div>
+          <button type="submit">create new hero</button>
+        </Form>
+      )
+    }}
     </Formik>
     </>
   )

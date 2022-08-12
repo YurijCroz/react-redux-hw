@@ -36,6 +36,8 @@ const superheroesReducer = (state = initialState, action) => {
         case ACTION_TYPES.CREATE_HERO: {
             const {heroes} = state;
             const {data} = action;
+            data.skills.forEach(el => Object(el))
+            console.log(data.skills)
             const newHero = {
                 ...data,
                 id: counter++,
